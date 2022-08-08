@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import "node_modules/pixel-borders/src/styles/pixel-borders.scss";
+
+$primary: #919098;
+$secondary: #a3bedb;
+$poke-red: #fe8585;
+$focus-input: #e7e7e7;
+$light: #dfdcdc;
+$light-opaque: #dfdcdca5;
+$text-color: #1f2328;
+
+$vertical-space: 0.5rem;
+$line-height-std: 1.33rem;
+$cursor: url("./img/poke-cursor-16.png"), auto;
+
+/* RESPONSIVE QUERIES */
+
+$small-width: 480px;
+$medium-width: 768px;
+$large-width: 1024px;
+
+@mixin extra-small {
+  @media (max-width: #{$small-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin small-down {
+  @media (max-width: #{$medium-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin small-only {
+  @media (min-width: #{$small-width}) and (max-width: #{$medium-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin small-up {
+  @media (min-width: #{$small-width}) {
+    @content;
+  }
+}
+
+@mixin medium-only {
+  @media (min-width: #{$medium-width}) and (max-width: #{$large-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin medium-up {
+  @media (min-width: #{$medium-width}) {
+    @content;
+  }
+}
+
+@mixin large {
+  @media (min-width: #{$large-width}) {
+    @content;
+  }
+}

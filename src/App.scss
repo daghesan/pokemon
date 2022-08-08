@@ -1,0 +1,297 @@
+@import "./style/config";
+
+html, body{
+  color:$text-color;
+  font-family: 'Press Start 2P', cursive;
+  width: 100%;
+  height: 100%;
+  margin:0;
+  padding:0;
+  background-image: url("./img/tall-grass-background.png");
+  background-repeat: repeat;
+}
+
+
+
+.App {
+  text-align: center;
+}
+
+.Title{
+  text-align: center;
+  color: $text-color;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img{
+    max-height: 10vh;
+  }
+
+}
+
+.Navbar{
+  background-color: $light-opaque;
+
+    @include pixel-borders(
+    $corner-size: 1,
+    $border-size: 4px,
+    $border-color: #000,
+    $border-inset-color: false
+  );
+
+  margin-left: auto;
+  margin-right: auto;
+  width: 10vw;
+  display: flex;
+  gap: 3%;
+  padding: 1%;
+  font-size: 1.25rem;
+  margin-bottom: 3%;
+  align-self: center;
+  justify-content: center;
+
+  a{
+    cursor: url("./img/poke-cursor-16.png"), auto;
+  }
+
+  a:active, a:visited, a:link{
+    color: white;
+  }
+
+  img{
+    max-height: 10vh;
+  }
+}
+
+.active{
+  font-weight: bold;
+}
+
+a{
+  text-decoration: none;
+}
+
+a:active, a:visited, a:link{
+  color: $text-color;
+}
+
+.Homepage{
+  margin-top: 5px;
+  height: 100%;
+  padding-bottom: 3%;
+
+  #grid-container{
+    display: grid;
+    //grid-template-columns: auto auto auto auto auto auto;
+    justify-content: center;
+    height: 100%;
+    grid-gap:70px;
+    padding: 5% 10% 5% 5%;
+    grid-auto-rows: 150px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+
+  #grid-item{
+    margin: 0 5% 10% 5%;
+    padding: 25% 50% 25% 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative; 
+    border: 20px solid transparent;
+    border-image: url("./img/tallgrass-border.png");
+    border-image-slice: 200;
+    border-image-repeat: round;
+
+    a{
+      cursor: url("./img/poke-cursor-16.png"), auto;
+    }
+
+    img{
+      cursor: url("./img/poke-cursor-16.png"), auto;
+    }
+
+  }
+
+}
+
+ul{
+  li{
+    list-style: none;
+  }
+}
+
+
+.Form{
+  margin-bottom: 3%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+  label{
+     margin: 0% 0% 1% 0%;
+  }
+
+  input{
+    height: 2vh;
+    color:$text-color;
+    font-family: 'Press Start 2P', cursive;
+    box-sizing: border-box;
+    border-radius: 0px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid $text-color;
+    transition: all 0.5s ease;
+    cursor: url("./img/poke-cursor-16.png"), auto;
+
+    &:focus{
+      background-color: $focus-input;
+      border: none;
+    }
+  }
+
+}
+
+.Loading{
+ margin: 3%;
+
+ p{
+  white-space:nowrap;
+ }
+
+ img{
+  margin-top: 2%;
+  max-height: 10vh;
+  animation: pokedex 5s infinite steps(12);
+ }
+
+ @keyframes pokedex {
+  50% {transform: rotate(15deg);}
+}
+
+}
+
+
+
+.Modal{
+  z-index: 10;
+  position: fixed;
+  top: 35%;
+  left: 25%;
+  height: auto;
+  width: 50%;
+  background-color: $light-opaque;
+  padding: 2%;
+  line-height: $line-height-std;
+  animation: fill 1s steps(5, start) forwards;
+
+  p{
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+  //5s steps(5, start) forwards
+
+  @keyframes fill{ 
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+       opacity: 1;
+     }
+   }
+
+  @include pixel-borders(
+    $corner-size: 2,
+    $border-size: 4px,
+    $border-color: #000,
+    $border-inset-color: false
+  )
+
+}
+
+.close-btn{
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  position: absolute;
+  top:4%;
+  left: 2%;
+  background-color: $poke-red;
+
+  &:hover{
+    background-color: $light;
+  }
+
+  @include pixel-borders(
+  $corner-size: 1,
+  $border-size: 4px,
+  $border-color: #000,
+  $border-inset-color: false
+);
+}
+
+.Footer{
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  background-color: rgba(255, 255, 255, 0.66);
+  border-top: 2px solid black;
+
+  p{
+    margin-left: auto;
+    margin-right: auto;
+    cursor: $cursor;
+
+    &:hover{
+    text-decoration: underline;
+    }
+
+  }
+  
+}
+
+.Pagination{
+
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: 5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  a, button{
+    padding:10px;
+    text-align: center;
+    background-color: $light;
+
+    &:hover{
+      background-color: $poke-red;
+    }
+
+    @include pixel-borders(
+    $corner-size: 1,
+    $border-size: 4px,
+    $border-color: #000,
+    $border-inset-color: false
+  );
+
+  }
+
+  button{
+    font-family: inherit;
+  }
+
+}
+
+.active-page{
+  background-color: black !important;
+  color:white;
+}
